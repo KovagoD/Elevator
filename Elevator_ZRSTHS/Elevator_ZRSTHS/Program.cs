@@ -1,17 +1,20 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 
 namespace Elevator_ZRSTHS
 {
     class Elevator
     {
+        bool isFinished = false;
+
         public int floorCount;
         public int currentFloor = 0;
 
         public int maxCapacity;
         public int currentCapacity = 0;
 
-        public bool isGoingUp = true;
+        public bool   = true;
 
         int turnCount = 0;
         int[] passengersOnBoard;
@@ -36,8 +39,9 @@ namespace Elevator_ZRSTHS
 
         public void Simulate()
         {
-            for (int i = 1; i < 50; i++)
+            while (!isFinished)
             {
+
                 if (isGoingUp)
                 {
                     GoUp();
@@ -46,7 +50,11 @@ namespace Elevator_ZRSTHS
                 {
                     GoDown();
                 }
+                isFinished = isAllPassengersGone();
+
             }
+
+            Console.WriteLine("finsihed: "+isFinished +" " + turnCount);
         }
 
         public void GoUp()
@@ -94,6 +102,9 @@ namespace Elevator_ZRSTHS
                     passengersOnBoard[i] = tmp != -1 ? tmp : 0;
                 }
             }
+                string tmp_2 = "";
+                for (int j = 0; j < passengers[currentFloor].Length; j++) { tmp_2 += passengers[currentFloor][j] + ", "; }
+                Console.WriteLine("\tpassengers[currentFloor]: " + tmp_2);
         }
 
         public int GetClosestWaitingPassenger()
@@ -102,12 +113,32 @@ namespace Elevator_ZRSTHS
             int result = -1;
             int index = -1;
 
-            for (int i = 1; i < passengers[currentFloor].Length; ++i)
+
+            int len = 0;
+            for (int i = 0; i < passengers[currentFloor].Length; i++)
+            {
+                if (passengers[currentFloor][i] != 0)
+                    len++;
+            }
+
+            int[] newArray = new int[len];
+            for (int i = 0, j = 0; i < passengers[currentFloor].Length; i++)
+            {
+                if (passengers[currentFloor][i] != 0)
+                {
+                    newArray[j] = passengers[currentFloor][i];
+                    j++;
+                }
+            }
+            passengers[currentFloor] = newArray;
+            //Console.WriteLine(passengers[currentFloor].Length+" length");
+
+            for (int i = 0; i < passengers[currentFloor].Length; ++i)
             {
                 if (passengers[currentFloor][i] != 0 && ((isGoingUp && passengers[currentFloor][i] > currentFloor + 1) || (!isGoingUp && passengers[currentFloor][i] < currentFloor + 1)))
                 {
-
-                    if (isGoingUp)
+                    
+                    if (!isGoingUp)
                     {
                         Array.Sort(passengers[currentFloor]);
                     }
@@ -115,6 +146,7 @@ namespace Elevator_ZRSTHS
                     {
                         Array.Reverse(passengers[currentFloor]);
                     }
+                   
 
                     if (difference > AbsoluteValue(passengers[currentFloor][i], currentFloor + 1))
                     {
@@ -130,9 +162,12 @@ namespace Elevator_ZRSTHS
                 passengers[currentFloor][index] = 0;
                 Console.Write("\t-Closest of element " + (currentFloor + 1) + " is : " + result + "\n");
 
-                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.ForegroundColor = ConsoleColor.Magenta;
                 Console.WriteLine("\tfelszállt: <-- " + result);
                 Console.ForegroundColor = ConsoleColor.White;
+
+            
+
             }
 
             return result;
@@ -142,7 +177,28 @@ namespace Elevator_ZRSTHS
         {
             return a > b ? a - b : b - a;
         }
+       
+        public bool isAllPassengersGone()
+        { 
+            bool result = true;
+            for (int i = 0; i < floorCount-1; i++)
+            {
+                if (passengers[i].Length>0)
+                {
+                    result = false;
+                }
+            }
 
+            for (int i = 0; i < passengersOnBoard.Length; i++)
+            {
+                if (passengersOnBoard[i]>0)
+                {
+                    result = false;
+                }
+            }
+            return result;
+        }
+        
         public void DEBUGInfo()
         {
             Console.ForegroundColor = isGoingUp ? ConsoleColor.Red : ConsoleColor.Blue;
