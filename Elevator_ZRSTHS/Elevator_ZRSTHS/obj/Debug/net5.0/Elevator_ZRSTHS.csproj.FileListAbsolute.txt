@@ -1,0 +1,16 @@
+C:\Development\Elevator_ZRSTHS\Elevator\Elevator_ZRSTHS\Elevator_ZRSTHS\bin\Debug\net5.0\Elevator_ZRSTHS.exe
+C:\Development\Elevator_ZRSTHS\Elevator\Elevator_ZRSTHS\Elevator_ZRSTHS\bin\Debug\net5.0\Elevator_ZRSTHS.deps.json
+C:\Development\Elevator_ZRSTHS\Elevator\Elevator_ZRSTHS\Elevator_ZRSTHS\bin\Debug\net5.0\Elevator_ZRSTHS.runtimeconfig.json
+C:\Development\Elevator_ZRSTHS\Elevator\Elevator_ZRSTHS\Elevator_ZRSTHS\bin\Debug\net5.0\Elevator_ZRSTHS.runtimeconfig.dev.json
+C:\Development\Elevator_ZRSTHS\Elevator\Elevator_ZRSTHS\Elevator_ZRSTHS\bin\Debug\net5.0\Elevator_ZRSTHS.dll
+C:\Development\Elevator_ZRSTHS\Elevator\Elevator_ZRSTHS\Elevator_ZRSTHS\bin\Debug\net5.0\Elevator_ZRSTHS.pdb
+C:\Development\Elevator_ZRSTHS\Elevator\Elevator_ZRSTHS\Elevator_ZRSTHS\obj\Debug\net5.0\Elevator_ZRSTHS.csproj.AssemblyReference.cache
+C:\Development\Elevator_ZRSTHS\Elevator\Elevator_ZRSTHS\Elevator_ZRSTHS\obj\Debug\net5.0\Elevator_ZRSTHS.GeneratedMSBuildEditorConfig.editorconfig
+C:\Development\Elevator_ZRSTHS\Elevator\Elevator_ZRSTHS\Elevator_ZRSTHS\obj\Debug\net5.0\Elevator_ZRSTHS.AssemblyInfoInputs.cache
+C:\Development\Elevator_ZRSTHS\Elevator\Elevator_ZRSTHS\Elevator_ZRSTHS\obj\Debug\net5.0\Elevator_ZRSTHS.AssemblyInfo.cs
+C:\Development\Elevator_ZRSTHS\Elevator\Elevator_ZRSTHS\Elevator_ZRSTHS\obj\Debug\net5.0\Elevator_ZRSTHS.csproj.CoreCompileInputs.cache
+C:\Development\Elevator_ZRSTHS\Elevator\Elevator_ZRSTHS\Elevator_ZRSTHS\obj\Debug\net5.0\Elevator_ZRSTHS.dll
+C:\Development\Elevator_ZRSTHS\Elevator\Elevator_ZRSTHS\Elevator_ZRSTHS\obj\Debug\net5.0\refint\Elevator_ZRSTHS.dll
+C:\Development\Elevator_ZRSTHS\Elevator\Elevator_ZRSTHS\Elevator_ZRSTHS\obj\Debug\net5.0\Elevator_ZRSTHS.pdb
+C:\Development\Elevator_ZRSTHS\Elevator\Elevator_ZRSTHS\Elevator_ZRSTHS\obj\Debug\net5.0\Elevator_ZRSTHS.genruntimeconfig.cache
+C:\Development\Elevator_ZRSTHS\Elevator\Elevator_ZRSTHS\Elevator_ZRSTHS\obj\Debug\net5.0\ref\Elevator_ZRSTHS.dll
