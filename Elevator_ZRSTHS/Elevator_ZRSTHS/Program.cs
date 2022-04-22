@@ -14,7 +14,7 @@ namespace Elevator_ZRSTHS
         public int maxCapacity;
         public int currentCapacity = 0;
 
-        public bool   = true;
+        public bool isGoingUp = true;
 
         int turnCount = 0;
         int[] passengersOnBoard;
@@ -25,7 +25,6 @@ namespace Elevator_ZRSTHS
             floorCount = int.Parse(input[0].Split(' ')[0]);
             maxCapacity = int.Parse(input[0].Split(' ')[1]);
             passengersOnBoard = new int[maxCapacity];
-            //new int[maxCapacity];
             passengers = new int[floorCount][];
 
             for (int i = 1; i < floorCount + 1; i++)
@@ -41,20 +40,12 @@ namespace Elevator_ZRSTHS
         {
             while (!isFinished)
             {
-
-                if (isGoingUp)
-                {
-                    GoUp();
-                }
-                else
-                {
-                    GoDown();
-                }
-                isFinished = isAllPassengersGone();
-
+                if (isGoingUp) { GoUp(); }
+                else { GoDown(); }
+                isFinished = IsAllPassengersGone();
             }
 
-            Console.WriteLine("finsihed: "+isFinished +" " + turnCount);
+            Console.WriteLine("finsihed: " + isFinished + " " + turnCount);
         }
 
         public void GoUp()
@@ -64,7 +55,6 @@ namespace Elevator_ZRSTHS
             CheckPassengersOnBoard();
             string tmp_1 = "";
             foreach (var item in passengersOnBoard) { tmp_1 += item + ", "; }
-            Console.WriteLine("\t-------passengers on board: " + tmp_1);
 
             currentFloor++;
             if (currentFloor == floorCount - 1) { isGoingUp = false; }
@@ -77,7 +67,6 @@ namespace Elevator_ZRSTHS
             CheckPassengersOnBoard();
             string tmp_1 = "";
             foreach (var item in passengersOnBoard) { tmp_1 += item + ", "; }
-            Console.WriteLine("\t-------passengers on board: " + tmp_1);
 
             currentFloor--;
             if (currentFloor == 0) { isGoingUp = true; turnCount++; }
@@ -89,10 +78,10 @@ namespace Elevator_ZRSTHS
             {
                 if (passengersOnBoard[i] == (currentFloor + 1))
                 {
-
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine("\tleszállt: --> " + passengersOnBoard[i]);
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("\t- leszállt: --> " + passengersOnBoard[i]);
                     Console.ForegroundColor = ConsoleColor.White;
+
                     passengersOnBoard[i] = 0;
                 }
 
@@ -102,9 +91,6 @@ namespace Elevator_ZRSTHS
                     passengersOnBoard[i] = tmp != -1 ? tmp : 0;
                 }
             }
-                string tmp_2 = "";
-                for (int j = 0; j < passengers[currentFloor].Length; j++) { tmp_2 += passengers[currentFloor][j] + ", "; }
-                Console.WriteLine("\tpassengers[currentFloor]: " + tmp_2);
         }
 
         public int GetClosestWaitingPassenger()
@@ -131,23 +117,11 @@ namespace Elevator_ZRSTHS
                 }
             }
             passengers[currentFloor] = newArray;
-            //Console.WriteLine(passengers[currentFloor].Length+" length");
 
             for (int i = 0; i < passengers[currentFloor].Length; ++i)
             {
                 if (passengers[currentFloor][i] != 0 && ((isGoingUp && passengers[currentFloor][i] > currentFloor + 1) || (!isGoingUp && passengers[currentFloor][i] < currentFloor + 1)))
                 {
-                    
-                    if (!isGoingUp)
-                    {
-                        Array.Sort(passengers[currentFloor]);
-                    }
-                    else
-                    {
-                        Array.Reverse(passengers[currentFloor]);
-                    }
-                   
-
                     if (difference > AbsoluteValue(passengers[currentFloor][i], currentFloor + 1))
                     {
                         difference = AbsoluteValue(passengers[currentFloor][i], currentFloor + 1);
@@ -160,14 +134,10 @@ namespace Elevator_ZRSTHS
             if (result != -1)
             {
                 passengers[currentFloor][index] = 0;
-                Console.Write("\t-Closest of element " + (currentFloor + 1) + " is : " + result + "\n");
 
-                Console.ForegroundColor = ConsoleColor.Magenta;
-                Console.WriteLine("\tfelszállt: <-- " + result);
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("\t- felszállt: <-- " + result);
                 Console.ForegroundColor = ConsoleColor.White;
-
-            
-
             }
 
             return result;
@@ -177,13 +147,13 @@ namespace Elevator_ZRSTHS
         {
             return a > b ? a - b : b - a;
         }
-       
-        public bool isAllPassengersGone()
-        { 
+
+        public bool IsAllPassengersGone()
+        {
             bool result = true;
-            for (int i = 0; i < floorCount-1; i++)
+            for (int i = 0; i < floorCount - 1; i++)
             {
-                if (passengers[i].Length>0)
+                if (passengers[i].Length > 0)
                 {
                     result = false;
                 }
@@ -191,28 +161,27 @@ namespace Elevator_ZRSTHS
 
             for (int i = 0; i < passengersOnBoard.Length; i++)
             {
-                if (passengersOnBoard[i]>0)
+                if (passengersOnBoard[i] > 0)
                 {
                     result = false;
                 }
             }
             return result;
         }
-        
+
         public void DEBUGInfo()
         {
             Console.ForegroundColor = isGoingUp ? ConsoleColor.Red : ConsoleColor.Blue;
-            Console.WriteLine(currentFloor + 1 + ". floor: ----------------------------------");
+            Console.WriteLine("\n " + (currentFloor + 1) + ". floor, isGoingUp: " + isGoingUp + ", [" + turnCount + ". turn]");
             Console.ForegroundColor = ConsoleColor.White;
 
             string tmp_1 = "";
             foreach (var item in passengersOnBoard) { tmp_1 += item + ", "; }
 
             string tmp_2 = "";
-            for (int j = 0; j < passengers[currentFloor].Length; j++) { tmp_2 += passengers[currentFloor][j] + ", "; }
+            for (int i = 0; i < passengers[currentFloor].Length; i++) { tmp_2 += passengers[currentFloor][i] + ", "; }
 
-            Console.WriteLine("\t-isGoingUp: " + isGoingUp + "\n\t-turn count: " + turnCount + " \n\t-passengers on board: " + tmp_1 + "\n\t-passengers on floor: " + tmp_2);
-            Console.WriteLine("\n");
+            Console.WriteLine("\t-passengers on board: " + tmp_1 + "\n\t-passengers on floor: " + tmp_2);
         }
     }
     internal class Program
