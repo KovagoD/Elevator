@@ -1,6 +1,5 @@
-# Elevator
-Elevator_ZRSTHS
-Lift
+# Lift
+
 Egy sokemeletes házban szokatlan módon üzemeltetik a liftet. A lift az első szintről indult 
 és mindig felmegy a legfelső szintre, majd visszatér az első szintre. Menet közben megáll
 minden olyan szinten, amelyik úti célja valamelyik liftben tartózkodó utasnak. Hasonlóan, 
