@@ -17,3 +17,4 @@ sorban egy 0 szám zárja. Minden sorban legfeljebb 200 szám lehet, tetszőlege
 
 A LIFT.KI állomány egyetlen sort tartalmazzon, a legkevesebb menetek számát, amely az 
 emberek elszállításához szükséges!
+![image](https://user-images.githubusercontent.com/25224122/165916690-f88bdd25-a40a-4f4a-a097-bbf3f9fe0321.png)
